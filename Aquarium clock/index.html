@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--=============== CSS ===============-->
+   <link rel="stylesheet" href="styles.css">
+
+   <title>Analog + digital watch</title>
+</head>
+
+<body>
+   <div class="container">
+      <div class="clock">
+         <div class="sea">
+            <div class="water"></div>
+         </div>
+         <div class="clock__circle">
+            <div class="clock__rounder"></div>
+            <div class="clock__hour" id="clock-hour"></div>
+            <div class="clock__minutes" id="clock-minutes"></div>
+            <div class="clock__seconds" id="clock-seconds"></div>
+         </div>
+
+         <div>
+            <div class="clock__date">
+               <span class="clock__day-week" id="date-day-week"></span>
+
+               <div>
+                  <span class="clock__month" id="date-month"></span>
+                  <span class="clock__day" id="date-day"></span>
+                  <span class="clock__year" id="date-year"></span>
+               </div>
+            </div>
+
+            <div class="clock__text">
+               <span class="clock__text-hour" id="text-hour"></span>
+               <span class="clock__text-minutes" id="text-minutes"></span>
+               <span class="clock__text-ampm" id="text-ampm"></span>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!--=============== MAIN JS ===============-->
+   <script src="main.js"></script>
+   <svg>
+      <filter id="turbulence" x="0" y="0" width="100%" height="100%">
+         <feTurbulence id="sea-filter" numOctaves="3" seed="2" baseFrequency="0.02 0.05"></feTurbulence>
+         <feDisplacementMap scale="20" in="SourceGraphic"></feDisplacementMap>
+         <animate xlink:href="#sea-filter" attributeName="baseFrequency" dur="60s" keyTimes="0;0.5;1"
+            values="0.02 0.06;0.04 0.08;0.02 0.06" repeatCount="indefinite" />
+      </filter>
+   </svg>
+</body>
+
+</html>
